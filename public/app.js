@@ -225,22 +225,25 @@
       <div class="card">
         ${projects.length ? `<input id="search" placeholder="${t('search')}" style="max-width:320px;margin-bottom:12px">` : ''}
         <div class="table-wrap"><table class="table">
-          <thead><tr><th style="width:90px">${t('colNumber')}</th><th>${t('colName')}</th><th>${t('colAuthor')}</th><th class="num">${t('colItems')}</th><th class="num">${t('colTotal')}</th></tr></thead>
+          <thead><tr><th style="width:90px">${t('colNumber')}</th><th>${t('colName')}</th><th>${t('client')}</th><th>${t('colAuthor')}</th><th class="num">${t('colItems')}</th><th class="num">${t('colTotal')}</th>${isAdmin() ? '<th style="width:44px"></th>' : ''}</tr></thead>
           <tbody id="rows"></tbody>
         </table></div>
       </div>`);
     const rows = main.querySelector('#rows');
     const draw = (q = '') => {
-      const list = projects.filter((p) => `${p.number} ${p.name} ${p.author || ''}`.toLowerCase().includes(q.toLowerCase()));
+      const list = searchList(projects, q, (p) => `${p.number} ${p.name} ${p.client_name || ''} ${p.author || ''}`);
       rows.innerHTML = list.length
-        ? list.map((p) => `<tr class="click" data-id="${p.id}"><td><b>${esc(p.number)}</b></td><td>${esc(p.name)}</td><td class="muted">${esc(p.author || '—')}</td><td class="num">${p.items}</td><td class="num"><b>${money(p.total)}</b></td></tr>`).join('')
-        : `<tr><td colspan="5" class="empty">${projects.length ? t('noResults') : t('noProjects')}</td></tr>`;
+        ? list.map((p) => `<tr class="click" data-id="${p.id}"><td><b>${esc(p.number)}</b></td><td>${esc(p.name)}</td><td>${esc(p.client_name || '—')}</td><td class="muted">${esc(p.author || '—')}</td><td class="num">${p.items}</td><td class="num"><b>${money(p.total)}</b></td>${isAdmin() ? `<td class="num"><button class="icon" data-del title="${t('deleteProject')}" aria-label="${t('deleteProject')}">✕</button></td>` : ''}</tr>`).join('')
+        : `<tr><td colspan="7" class="empty">${projects.length ? t('noResults') : t('noProjects')}</td></tr>`;
     };
     draw();
     main.querySelector('#search')?.addEventListener('input', (e) => draw(e.target.value));
     rows.addEventListener('click', (e) => {
       const tr = e.target.closest('tr[data-id]');
-      if (tr) location.hash = `#/project/${tr.dataset.id}`;
+      if (!tr) return;
+      const p = projects.find((x) => x.id === Number(tr.dataset.id));
+      if (e.target.closest('[data-del]')) { deleteProject(p); return; }
+      location.hash = `#/project/${tr.dataset.id}`;
     });
   }
 
@@ -324,26 +327,82 @@
     return { focus: () => q.focus() };
   }
 
-  // ---------- Калькуляция проекта ----------
-  async function viewProject(id) {
-    const [project, materials, prices] = await Promise.all([api('GET', `/api/projects/${id}`), api('GET', '/api/materials'), api('GET', '/api/pricelist')]);
-    const { margin: m, vat: v } = state.settings;
+  // ---------- Проект: вкладки ----------
+  const PROJECT_TABS = [['calc', 'tabCalc'], ['client', 'tabClient'], ['info', 'tabInfo'], ['offer', 'tabOffer']];
+  async function viewProject(id, tab = 'calc') {
+    if (!PROJECT_TABS.some(([k]) => k === tab)) tab = 'calc';
+    const project = await api('GET', `/api/projects/${id}`);
+    const main = shell('projects', `
+      <div class="print-head"><img src="/logo.png" alt="LevelPrint"></div>
+      <div class="page-head">
+        <div>
+          <div class="muted">${t('project')} №${esc(project.number)}${project.client_name ? ` · ${esc(project.client_name)}` : ''}</div>
+          <h1>${esc(project.name)}</h1>
+        </div>
+        <div class="actions">
+          <button id="edit-project">${t('edit')}</button>
+          ${tab === 'calc' ? `<button id="print">${t('print')}</button>` : ''}
+          ${isAdmin() ? `<button id="del-project" class="danger">${t('deleteProject')}</button>` : ''}
+        </div>
+      </div>
+      <nav class="tabs no-print" role="tablist">
+        ${PROJECT_TABS.map(([k, label]) => `<a role="tab" href="#/project/${id}/${k}" class="${k === tab ? 'on' : ''}" aria-selected="${k === tab}">${t(label)}${k === 'info' && project.photos.length ? ` <span class="count">${project.photos.length}</span>` : ''}</a>`).join('')}
+      </nav>
+      <div id="tab-body"></div>`);
+
+    main.querySelector('#edit-project').addEventListener('click', async () => {
+      const r = await ask({ title: t('edit'), fields: [
+        { name: 'number', label: t('projectNumber'), value: project.number },
+        { name: 'name', label: t('projectName'), value: project.name },
+      ] });
+      if (!r) return;
+      try { await api('PUT', `/api/projects/${id}`, r); route(); } catch (err) { fail(err); }
+    });
+    main.querySelector('#del-project')?.addEventListener('click', () => deleteProject(project));
+    main.querySelector('#print')?.addEventListener('click', () => window.print());
+
+    const body = main.querySelector('#tab-body');
+    if (tab === 'calc') await tabCalc(project, body);
+    else if (tab === 'client') tabClient(project, body);
+    else if (tab === 'info') tabInfo(project, body);
+    else body.innerHTML = `<div class="card empty-state"><h2>${t('tabOffer')}</h2><p class="muted">${t('offerSoon')}</p></div>`;
+  }
+
+  async function deleteProject(project) {
+    if (!(await confirmBox(t('confirmDeleteProjectNamed', { number: project.number, name: project.name })))) return false;
+    try {
+      await api('DELETE', `/api/projects/${project.id}`);
+      toast(t('projectDeleted'));
+      if (location.hash === '#/projects') route(); else location.hash = '#/projects';
+      return true;
+    } catch (err) { fail(err); return false; }
+  }
+
+  // ---------- Вкладка «Калькуляция» ----------
+  async function tabCalc(project, body) {
+    const id = project.id;
+    const [materials, prices] = await Promise.all([api('GET', '/api/materials'), api('GET', '/api/pricelist')]);
+    const vatRate = state.settings.vat;
+    let m = Number(project.margin) || state.settings.margin;
+    let vatOn = project.vat_on !== 0;
     let mode = materials.length ? 'base' : prices.length ? 'price' : 'manual';
     let chosen = null;
     // Позиции из прайс-листа — уже цена для клиента, маржа к ним не применяется
     const marginOf = (it) => (it.source === 'price' ? it.qty * it.price : it.qty * it.price * m);
 
-    const main = shell('projects', `
-      <div class="print-head"><img src="/logo.png" alt="LevelPrint"></div>
-      <div class="page-head">
-        <div>
-          <div class="muted">${t('project')} №${esc(project.number)}</div>
-          <h1>${esc(project.name)}</h1>
+    body.innerHTML = `
+      ${project.client_name || project.client_phone ? `<div class="print-only print-client">${t('client')}: ${esc([project.client_name, project.client_phone].filter(Boolean).join(', '))}</div>` : ''}
+      <div class="card calc-settings no-print">
+        <div class="calc-setting">
+          <label for="c-margin">${t('marginLabel')}</label>
+          <div class="margin-box"><span>×</span><input id="c-margin" inputmode="decimal" value="${fmt(m)}" aria-describedby="margin-hint"></div>
+          <div class="muted small" id="margin-hint">${t('marginHint', { d: fmt(state.settings.margin) })}</div>
         </div>
-        <div class="actions">
-          <button id="edit-project">${t('edit')}</button>
-          <button id="print">${t('print')}</button>
-          ${isAdmin() ? `<button id="del-project">${t('delete')}</button>` : ''}
+        <div class="calc-setting">
+          <span class="label">${t('vatLabelShort', { v: fmt(vatRate) })}</span>
+          <button type="button" class="switch ${vatOn ? 'on' : ''}" id="c-vat" role="switch" aria-checked="${vatOn}">
+            <span class="knob"></span><span class="switch-text">${t(vatOn ? 'vatOn' : 'vatOff')}</span>
+          </button>
         </div>
       </div>
       <div class="card">
@@ -351,7 +410,7 @@
           <thead><tr>
             <th>#</th><th>${t('colPosition')}</th><th>${t('colUnit')}</th>
             <th class="num">${t('colQty')}</th><th class="num">${t('colPrice')}</th>
-            <th class="num">${t('colSum')}</th><th class="num">${t('colMargin', { m: fmt(m) })}</th><th class="no-print"></th>
+            <th class="num">${t('colSum')}</th><th class="num" id="margin-head">${t('colMargin', { m: fmt(m) })}</th><th class="no-print"></th>
           </tr></thead>
           <tbody></tbody>
         </table></div>
@@ -366,36 +425,63 @@
         <div id="add-area"></div>
         <div class="error" id="add-error"></div>
       </div>
-      <div class="card"><div class="totals" id="totals"></div></div>`);
+      <div class="card"><div class="totals" id="totals"></div></div>`;
 
-    const tbody = main.querySelector('#items tbody');
+    const tbody = body.querySelector('#items tbody');
     const drawTotals = () => {
       const cost = project.items.filter((i) => i.source !== 'price').reduce((s, i) => s + i.qty * i.price, 0);
       const retail = project.items.filter((i) => i.source === 'price').reduce((s, i) => s + i.qty * i.price, 0);
-      const noVat = cost * m + retail, vat = noVat * v / 100;
-      main.querySelector('#totals').innerHTML = `
+      const noVat = cost * m + retail, vat = vatOn ? noVat * vatRate / 100 : 0;
+      body.querySelector('#totals').innerHTML = `
         <div><span>${t('totalCost')}</span><span>${money(cost)}</span></div>
         <div><span>${t('totalMargin', { m: fmt(m) })}</span><span>${money(cost * m)}</span></div>
         ${retail ? `<div><span>${t('totalPriceItems')}</span><span>${money(retail)}</span></div>
         <div><span>${t('totalNoVat')}</span><span>${money(noVat)}</span></div>` : ''}
-        <div><span>${t('totalVat', { v: fmt(v) })}</span><span>${money(vat)}</span></div>
-        <div class="grand"><span>${t('totalAll')}</span><span>${money(noVat + vat)}</span></div>`;
+        ${vatOn ? `<div><span>${t('totalVat', { v: fmt(vatRate) })}</span><span>${money(vat)}</span></div>` : `<div class="muted"><span>${t('vatNotApplied')}</span><span>—</span></div>`}
+        <div class="grand"><span>${t(vatOn ? 'totalAll' : 'totalAllNoVat')}</span><span>${money(noVat + vat)}</span></div>`;
     };
     const sourceTag = (it) => (it.source === 'price' ? `<span class="tag red">${t('priceMark')}</span>` : it.source === 'manual' ? `<span class="tag">${t('manualMark')}</span>` : '');
     const drawItems = () => {
+      body.querySelector('#margin-head').textContent = t('colMargin', { m: fmt(m) });
       tbody.innerHTML = project.items.length ? project.items.map((it, n) => `
         <tr data-id="${it.id}">
           <td class="muted">${n + 1}</td>
-          <td><input data-f="name" value="${esc(it.name)}">${sourceTag(it)}</td>
-          <td>${unitSelect('data-f="unit"', it.unit, true)}</td>
-          <td><input data-f="qty" class="num" inputmode="decimal" value="${fmt(it.qty)}"></td>
-          <td><input data-f="price" class="num" inputmode="decimal" value="${fmt(it.price)}"></td>
+          <td><input data-f="name" value="${esc(it.name)}" aria-label="${esc(t('colPosition'))}">${sourceTag(it)}</td>
+          <td>${unitSelect(`data-f="unit" aria-label="${esc(t('colUnit'))}"`, it.unit, true)}</td>
+          <td><input data-f="qty" class="num" inputmode="decimal" value="${fmt(it.qty)}" aria-label="${esc(t('colQty'))}"></td>
+          <td><input data-f="price" class="num" inputmode="decimal" value="${fmt(it.price)}" aria-label="${esc(t('colPrice'))}"></td>
           <td class="num" data-sum>${fmt(it.qty * it.price)}</td>
           <td class="num" data-margin><b>${fmt(marginOf(it))}</b>${it.source === 'price' ? `<div class="muted small">${t('noMarginHint')}</div>` : ''}</td>
           <td class="no-print"><button class="icon" data-del title="${t('delete')}" aria-label="${t('delete')}">✕</button></td>
         </tr>`).join('') : `<tr><td colspan="8" class="empty">${t('noItems')}</td></tr>`;
       drawTotals();
     };
+
+    // Маржа проекта и НДС: сохраняем сразу
+    const marginEl = body.querySelector('#c-margin');
+    const saveMargin = async () => {
+      const val = parseNum(marginEl.value);
+      if (!Number.isFinite(val) || val <= 0 || val > 100) { toast(t('err_bad_number'), true); marginEl.value = fmt(m); return; }
+      if (val === m) { marginEl.value = fmt(m); return; }
+      try {
+        await api('PUT', `/api/projects/${id}`, { margin: val });
+        m = val; marginEl.value = fmt(m); drawItems(); toast(t('saved'));
+      } catch (err) { fail(err); marginEl.value = fmt(m); }
+    };
+    marginEl.addEventListener('change', saveMargin);
+    marginEl.addEventListener('keydown', (e) => { if (e.key === 'Enter') marginEl.blur(); });
+    const vatBtn = body.querySelector('#c-vat');
+    vatBtn.addEventListener('click', async () => {
+      const next = !vatOn;
+      try {
+        await api('PUT', `/api/projects/${id}`, { vat_on: next });
+        vatOn = next;
+        vatBtn.classList.toggle('on', vatOn);
+        vatBtn.setAttribute('aria-checked', vatOn);
+        vatBtn.querySelector('.switch-text').textContent = t(vatOn ? 'vatOn' : 'vatOff');
+        drawTotals();
+      } catch (err) { fail(err); }
+    });
 
     // Изменение строки — сохраняем сразу
     tbody.addEventListener('change', async (e) => {
@@ -433,13 +519,13 @@
     });
 
     // Добавление позиции: из базы, из прайс-листа или вручную
-    const area = main.querySelector('#add-area');
-    const errEl = main.querySelector('#add-error');
+    const area = body.querySelector('#add-area');
+    const errEl = body.querySelector('#add-error');
     let picker = null;
-    const addItem = async (body) => {
+    const addItem = async (payload) => {
       errEl.textContent = '';
       try {
-        await api('POST', `/api/projects/${id}/items`, body);
+        await api('POST', `/api/projects/${id}/items`, payload);
         project.items = (await api('GET', `/api/projects/${id}`)).items;
         drawItems();
         toast(t('added'));
@@ -447,7 +533,7 @@
       } catch (err) { errEl.textContent = errText(err); return false; }
     };
     const drawAdd = () => {
-      main.querySelectorAll('[data-mode]').forEach((b) => b.classList.toggle('on', b.dataset.mode === mode));
+      body.querySelectorAll('[data-mode]').forEach((b) => b.classList.toggle('on', b.dataset.mode === mode));
       errEl.textContent = '';
       chosen = null;
       if (mode === 'manual') {
@@ -477,8 +563,8 @@
       const chosenEl = area.querySelector('#chosen-name'), qtyEl = area.querySelector('#a-qty');
       const submit = async () => {
         if (!chosen) { errEl.textContent = t('nothingSelected'); return; }
-        const body = isBase ? { material_id: chosen.id, qty: qtyEl.value } : { price_id: chosen.id, qty: qtyEl.value };
-        if (await addItem(body)) { qtyEl.value = '1'; picker.focus(); }
+        const payload = isBase ? { material_id: chosen.id, qty: qtyEl.value } : { price_id: chosen.id, qty: qtyEl.value };
+        if (await addItem(payload)) { qtyEl.value = '1'; picker.focus(); }
       };
       picker = mountPicker(area.querySelector('#pk'), {
         items: isBase ? materials : prices,
@@ -493,26 +579,154 @@
         },
       });
       area.querySelector('#pick-form').addEventListener('submit', (ev) => { ev.preventDefault(); submit(); });
-      picker.focus();
     };
-    main.querySelectorAll('[data-mode]').forEach((b) => b.addEventListener('click', () => { mode = b.dataset.mode; drawAdd(); }));
-
-    main.querySelector('#print').addEventListener('click', () => window.print());
-    main.querySelector('#edit-project').addEventListener('click', async () => {
-      const r = await ask({ title: t('edit'), fields: [
-        { name: 'number', label: t('projectNumber'), value: project.number },
-        { name: 'name', label: t('projectName'), value: project.name },
-      ] });
-      if (!r) return;
-      try { await api('PUT', `/api/projects/${id}`, r); route(); } catch (err) { fail(err); }
-    });
-    main.querySelector('#del-project')?.addEventListener('click', async () => {
-      if (!(await confirmBox(t('confirmDeleteProject')))) return;
-      try { await api('DELETE', `/api/projects/${id}`); location.hash = '#/projects'; } catch (err) { fail(err); }
-    });
+    body.querySelectorAll('[data-mode]').forEach((b) => b.addEventListener('click', () => { mode = b.dataset.mode; drawAdd(); picker?.focus(); }));
 
     drawItems();
     drawAdd();
+  }
+
+  // ---------- Вкладка «О клиенте» ----------
+  function tabClient(project, body) {
+    const tgUser = (v) => String(v || '').trim().replace(/^https?:\/\/t\.me\//i, '').replace(/^@/, '');
+    const phoneHref = (v) => String(v || '').replace(/[^\d+]/g, '');
+    body.innerHTML = `
+      <form class="card" id="client-form" novalidate>
+        <h2>${t('tabClient')}</h2>
+        <div class="form-grid">
+          <div><label for="cl-name">${t('clientName')}</label><input id="cl-name" name="client_name" value="${esc(project.client_name)}" autocomplete="off"></div>
+          <div><label for="cl-phone">${t('clientPhone')}</label><input id="cl-phone" name="client_phone" type="tel" inputmode="tel" placeholder="+998 90 123 45 67" value="${esc(project.client_phone)}" autocomplete="off"></div>
+          <div><label for="cl-tg">${t('clientTelegram')}</label><input id="cl-tg" name="client_telegram" placeholder="@username" value="${esc(project.client_telegram)}" autocomplete="off"></div>
+        </div>
+        <div class="form-actions">
+          <button class="primary" type="submit">${t('save')}</button>
+          <span id="client-links" class="client-links"></span>
+        </div>
+        <div class="error" id="client-error"></div>
+      </form>`;
+    const form = body.querySelector('#client-form');
+    const drawLinks = () => {
+      const ph = phoneHref(form.client_phone.value), tg = tgUser(form.client_telegram.value);
+      body.querySelector('#client-links').innerHTML = [
+        ph ? `<a class="btn-link" href="tel:${esc(ph)}">${t('callClient')}</a>` : '',
+        /^[A-Za-z0-9_]{3,64}$/.test(tg) ? `<a class="btn-link" href="https://t.me/${esc(tg)}" target="_blank" rel="noopener">${t('openTelegram')}</a>` : '',
+      ].join('');
+    };
+    drawLinks();
+    form.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      const data = Object.fromEntries(new FormData(form));
+      try {
+        await api('PUT', `/api/projects/${project.id}`, data);
+        Object.assign(project, data);
+        body.querySelector('#client-error').textContent = '';
+        drawLinks();
+        toast(t('saved'));
+      } catch (err) { body.querySelector('#client-error').textContent = errText(err); }
+    });
+  }
+
+  // ---------- Вкладка «О проекте»: локация, описание, фото ----------
+  function tabInfo(project, body) {
+    const mapUrl = () => (project.lat != null && project.lng != null
+      ? `https://yandex.uz/maps/?pt=${project.lng},${project.lat}&z=17&l=map`
+      : project.location ? `https://yandex.uz/maps/?text=${encodeURIComponent(project.location)}` : '');
+    body.innerHTML = `
+      <form class="card" id="info-form" novalidate>
+        <h2>${t('locationTitle')}</h2>
+        <div class="form-grid">
+          <div class="wide"><label for="in-loc">${t('locationAddress')}</label><input id="in-loc" name="location" value="${esc(project.location)}" placeholder="${esc(t('locationPh'))}"></div>
+          <div class="wide"><label for="in-notes">${t('projectNotes')}</label><textarea id="in-notes" name="notes" rows="3">${esc(project.notes)}</textarea></div>
+        </div>
+        <div class="muted small" id="coords"></div>
+        <div class="form-actions">
+          <button class="primary" type="submit">${t('save')}</button>
+          <button type="button" id="geo">${t('myLocation')}</button>
+          <span id="map-link"></span>
+        </div>
+        <div class="error" id="info-error"></div>
+      </form>
+      <div class="card">
+        <div class="photos-head">
+          <h2>${t('photosTitle')}</h2>
+          <label class="upload-btn"><input type="file" id="ph-input" accept="image/*" multiple hidden>${t('uploadPhotos')}</label>
+        </div>
+        <div class="muted small" id="ph-status"></div>
+        <div class="gallery" id="gallery"></div>
+      </div>`;
+    const form = body.querySelector('#info-form'), errEl = body.querySelector('#info-error');
+    const drawMap = () => {
+      const url = mapUrl();
+      body.querySelector('#map-link').innerHTML = url ? `<a class="btn-link" href="${esc(url)}" target="_blank" rel="noopener">${t('openMap')}</a>` : '';
+      body.querySelector('#coords').textContent = project.lat != null ? `${t('coords')}: ${project.lat.toFixed(6)}, ${project.lng.toFixed(6)}` : '';
+    };
+    drawMap();
+    form.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      const data = Object.fromEntries(new FormData(form));
+      try { await api('PUT', `/api/projects/${project.id}`, data); Object.assign(project, data); errEl.textContent = ''; drawMap(); toast(t('saved')); }
+      catch (err) { errEl.textContent = errText(err); }
+    });
+    body.querySelector('#geo').addEventListener('click', () => {
+      if (!navigator.geolocation) { errEl.textContent = t('geoUnavailable'); return; }
+      errEl.textContent = '';
+      navigator.geolocation.getCurrentPosition(async (pos) => {
+        const lat = Math.round(pos.coords.latitude * 1e6) / 1e6, lng = Math.round(pos.coords.longitude * 1e6) / 1e6;
+        try { await api('PUT', `/api/projects/${project.id}`, { lat, lng }); project.lat = lat; project.lng = lng; drawMap(); toast(t('saved')); }
+        catch (err) { errEl.textContent = errText(err); }
+      }, () => { errEl.textContent = t('geoDenied'); }, { enableHighAccuracy: true, timeout: 15000 });
+    });
+
+    // Фото
+    const gallery = body.querySelector('#gallery'), status = body.querySelector('#ph-status');
+    const drawGallery = () => {
+      gallery.innerHTML = project.photos.length ? project.photos.map((p) => `
+        <figure data-id="${p.id}">
+          <a href="/api/photos/${p.id}" target="_blank" rel="noopener"><img src="/api/photos/${p.id}" alt="${esc(p.original_name || t('photo'))}" loading="lazy"></a>
+          <button class="icon ph-del" data-del title="${t('delete')}" aria-label="${t('delete')}">✕</button>
+        </figure>`).join('') : `<div class="empty">${t('noPhotos')}</div>`;
+    };
+    drawGallery();
+    // Большие фото с телефона уменьшаем до 2000 px — так быстрее и меньше места на диске
+    const shrink = async (file) => {
+      if (!/^image\/(jpeg|png|webp)$/.test(file.type) || file.size < 1.5 * 1024 * 1024) return file;
+      try {
+        const bmp = await createImageBitmap(file);
+        const k = Math.min(1, 2000 / Math.max(bmp.width, bmp.height));
+        const c = document.createElement('canvas');
+        c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
+        c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
+        const blob = await new Promise((r) => c.toBlob(r, 'image/jpeg', 0.85));
+        return blob && blob.size < file.size ? new File([blob], file.name.replace(/\.\w+$/, '') + '.jpg', { type: 'image/jpeg' }) : file;
+      } catch { return file; }
+    };
+    body.querySelector('#ph-input').addEventListener('change', async (e) => {
+      const files = [...e.target.files];
+      e.target.value = '';
+      let done = 0, failed = 0;
+      for (const f of files) {
+        status.textContent = t('uploading', { n: done + 1, total: files.length });
+        try {
+          const file = await shrink(f);
+          const res = await fetch(`/api/projects/${project.id}/photos`, { method: 'POST', headers: { 'Content-Type': file.type || 'application/octet-stream', 'X-File-Name': encodeURIComponent(f.name) }, body: file });
+          if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || 'unknown');
+          done++;
+        } catch { failed++; }
+      }
+      project.photos = (await api('GET', `/api/projects/${project.id}`)).photos;
+      drawGallery();
+      const countEl = document.querySelector('.tabs a[href$="/info"]');
+      if (countEl) countEl.innerHTML = `${t('tabInfo')}${project.photos.length ? ` <span class="count">${project.photos.length}</span>` : ''}`;
+      status.textContent = failed ? t('uploadFailed', { n: failed }) : '';
+      if (done) toast(t('photosUploaded', { n: done }));
+    });
+    gallery.addEventListener('click', async (e) => {
+      const btn = e.target.closest('[data-del]');
+      if (!btn) return;
+      const pid = Number(btn.closest('figure').dataset.id);
+      if (!(await confirmBox(t('confirmDeletePhoto')))) return;
+      try { await api('DELETE', `/api/photos/${pid}`); project.photos = project.photos.filter((p) => p.id !== pid); drawGallery(); } catch (err) { fail(err); }
+    });
   }
 
   // ---------- Материалы ----------
@@ -727,7 +941,7 @@
       <form class="card" id="settings-form" novalidate>
         <h2>${t('settingsTitle')}</h2>
         <div class="row row-settings">
-          <div><label for="s-margin">${t('marginLabel')}</label><input id="s-margin" name="margin" value="${fmt(state.settings.margin)}" inputmode="decimal"></div>
+          <div><label for="s-margin">${t('marginDefaultLabel')}</label><input id="s-margin" name="margin" value="${fmt(state.settings.margin)}" inputmode="decimal"></div>
           <div><label for="s-vat">${t('vatLabel')}</label><input id="s-vat" name="vat" value="${fmt(state.settings.vat)}" inputmode="decimal"></div>
           <button class="primary" type="submit">${t('save')}</button>
         </div>
@@ -818,9 +1032,9 @@
   async function route() {
     if (!state.user) return;
     const h = location.hash.replace(/^#\/?/, '');
-    const pm = h.match(/^project\/(\d+)$/);
+    const pm = h.match(/^project\/(\d+)(?:\/(\w+))?$/);
     try {
-      if (pm) await viewProject(Number(pm[1]));
+      if (pm) await viewProject(Number(pm[1]), pm[2]);
       else if (h === 'new') await viewNew();
       else if (h === 'materials') await viewMaterials();
       else if (h === 'pricelist') await viewPriceList();

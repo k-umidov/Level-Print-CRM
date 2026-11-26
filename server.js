@@ -86,6 +86,26 @@ if (!hasColumn('project_items', 'source')) {
 }
 if (!hasColumn('project_items', 'price_id')) db.exec('ALTER TABLE project_items ADD COLUMN price_id INTEGER REFERENCES price_list(id) ON DELETE SET NULL');
 
+// Проект: своя маржа, НДС вкл/выкл, данные клиента и локация
+for (const [col, def] of [
+  ['margin', 'REAL'], ['vat_on', 'INTEGER NOT NULL DEFAULT 1'],
+  ['client_name', "TEXT NOT NULL DEFAULT ''"], ['client_phone', "TEXT NOT NULL DEFAULT ''"], ['client_telegram', "TEXT NOT NULL DEFAULT ''"],
+  ['location', "TEXT NOT NULL DEFAULT ''"], ['lat', 'REAL'], ['lng', 'REAL'], ['notes', "TEXT NOT NULL DEFAULT ''"],
+]) if (!hasColumn('projects', col)) db.exec(`ALTER TABLE projects ADD COLUMN ${col} ${def}`);
+db.exec(`
+  CREATE TABLE IF NOT EXISTS project_photos (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    project_id INTEGER NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
+    file TEXT NOT NULL,
+    mime TEXT NOT NULL,
+    original_name TEXT NOT NULL DEFAULT '',
+    uploaded_by INTEGER REFERENCES users(id) ON DELETE SET NULL,
+    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+  );
+`);
+const UPLOADS = path.join(DATA_DIR, 'uploads');
+fs.mkdirSync(UPLOADS, { recursive: true });
+
 const POSITIONS = ['director', 'cfo', 'supply', 'printer', 'sales', 'worker'];
 const positionOf = (v, fallback = 'worker') => (POSITIONS.includes(v) ? v : fallback);
 
@@ -171,12 +191,15 @@ function getSettings() {
   return { margin: s.margin ?? 3, vat: s.vat ?? 12 };
 }
 function projectTotals(projectId, settings = getSettings()) {
+  const pr = db.prepare('SELECT margin, vat_on FROM projects WHERE id = ?').get(projectId) || {};
+  const margin = pr.margin ?? settings.margin;
+  const vatRate = pr.vat_on === 0 ? 0 : settings.vat;
   const { cost, retail } = db.prepare(`SELECT
       COALESCE(SUM(CASE WHEN source != 'price' THEN qty * price END), 0) AS cost,
       COALESCE(SUM(CASE WHEN source = 'price' THEN qty * price END), 0) AS retail
     FROM project_items WHERE project_id = ?`).get(projectId);
-  const withMargin = cost * settings.margin + retail;
-  const vat = withMargin * settings.vat / 100;
+  const withMargin = cost * margin + retail;
+  const vat = withMargin * vatRate / 100;
   return { cost, retail, withMargin, vat, total: withMargin + vat };
 }
 function nextProjectNumber() {
@@ -281,7 +304,7 @@ route('GET', '/api/projects', (req) => {
   requireUser(req);
   const settings = getSettings();
   const rows = db.prepare(`
-    SELECT p.id, p.number, p.name, u.name AS author,
+    SELECT p.id, p.number, p.name, p.client_name, u.name AS author,
       (SELECT COUNT(*) FROM project_items i WHERE i.project_id = p.id) AS items
     FROM projects p LEFT JOIN users u ON u.id = p.created_by
     ORDER BY p.id DESC`).all();
@@ -293,7 +316,7 @@ route('POST', '/api/projects', async (req) => {
   const name = str(b.name), number = str(b.number, 30) || nextProjectNumber();
   if (!name) throw new HttpError(400, 'required');
   if (db.prepare('SELECT 1 FROM projects WHERE number = ?').get(number)) throw new HttpError(409, 'number_taken');
-  const { lastInsertRowid } = db.prepare('INSERT INTO projects (number, name, created_by) VALUES (?, ?, ?)').run(number, name, u.id);
+  const { lastInsertRowid } = db.prepare('INSERT INTO projects (number, name, created_by, margin) VALUES (?, ?, ?, ?)').run(number, name, u.id, getSettings().margin);
   return { id: Number(lastInsertRowid) };
 });
 route('GET', '/api/projects/:id', (req, p) => {
@@ -301,20 +324,81 @@ route('GET', '/api/projects/:id', (req, p) => {
   const project = db.prepare(`SELECT p.*, u.name AS author FROM projects p LEFT JOIN users u ON u.id = p.created_by WHERE p.id = ?`).get(p.id);
   if (!project) throw new HttpError(404, 'not_found');
   project.items = db.prepare('SELECT * FROM project_items WHERE project_id = ? ORDER BY id').all(p.id);
+  project.photos = db.prepare('SELECT id, original_name, created_at FROM project_photos WHERE project_id = ? ORDER BY id').all(p.id);
+  if (project.margin == null) project.margin = getSettings().margin;
   return project;
 });
 route('PUT', '/api/projects/:id', async (req, p) => {
   requireUser(req);
   const b = await readBody(req);
-  const name = str(b.name), number = str(b.number, 30);
-  if (!name || !number) throw new HttpError(400, 'required');
-  if (db.prepare('SELECT 1 FROM projects WHERE number = ? AND id != ?').get(number, p.id)) throw new HttpError(409, 'number_taken');
-  db.prepare('UPDATE projects SET name = ?, number = ? WHERE id = ?').run(name, number, p.id);
+  const cur = db.prepare('SELECT * FROM projects WHERE id = ?').get(p.id);
+  if (!cur) throw new HttpError(404, 'not_found');
+  const has = (k) => Object.prototype.hasOwnProperty.call(b, k);
+  const next = { ...cur };
+  if (has('name')) next.name = str(b.name);
+  if (has('number')) next.number = str(b.number, 30);
+  if (!next.name || !next.number) throw new HttpError(400, 'required');
+  if (has('margin')) { next.margin = num(b.margin); if (next.margin <= 0 || next.margin > 100) throw new HttpError(400, 'bad_number'); }
+  if (has('vat_on')) next.vat_on = b.vat_on ? 1 : 0;
+  for (const k of ['client_name', 'client_phone', 'client_telegram', 'location']) if (has(k)) next[k] = str(b[k], 300);
+  if (has('notes')) next.notes = str(b.notes, 5000);
+  for (const k of ['lat', 'lng']) if (has(k)) {
+    if (b[k] === null || b[k] === '') next[k] = null;
+    else { const v = Number(b[k]); if (!Number.isFinite(v) || Math.abs(v) > 180) throw new HttpError(400, 'bad_number'); next[k] = v; }
+  }
+  if (db.prepare('SELECT 1 FROM projects WHERE number = ? AND id != ?').get(next.number, p.id)) throw new HttpError(409, 'number_taken');
+  db.prepare(`UPDATE projects SET name = ?, number = ?, margin = ?, vat_on = ?, client_name = ?, client_phone = ?, client_telegram = ?,
+    location = ?, lat = ?, lng = ?, notes = ? WHERE id = ?`).run(next.name, next.number, next.margin, next.vat_on, next.client_name,
+    next.client_phone, next.client_telegram, next.location, next.lat, next.lng, next.notes, p.id);
   return { ok: true };
 });
 route('DELETE', '/api/projects/:id', (req, p) => {
   requireAdmin(req);
+  const files = db.prepare('SELECT file FROM project_photos WHERE project_id = ?').all(p.id);
   db.prepare('DELETE FROM projects WHERE id = ?').run(p.id);
+  for (const f of files) fs.rm(path.join(UPLOADS, f.file), { force: true }, () => {});
+  return { ok: true };
+});
+
+// Фото проекта: загрузка отдельным запросом с типом image/*, до 15 МБ
+const PHOTO_TYPES = { 'image/jpeg': '.jpg', 'image/png': '.png', 'image/webp': '.webp', 'image/gif': '.gif', 'image/heic': '.heic', 'image/heif': '.heif' };
+route('POST', '/api/projects/:id/photos', async (req, p) => {
+  const u = requireUser(req);
+  if (!db.prepare('SELECT 1 FROM projects WHERE id = ?').get(p.id)) throw new HttpError(404, 'not_found');
+  const mime = String(req.headers['content-type'] || '').split(';')[0].trim().toLowerCase();
+  const ext = PHOTO_TYPES[mime];
+  if (!ext) throw new HttpError(415, 'bad_image');
+  const chunks = [];
+  let size = 0;
+  for await (const chunk of req) {
+    size += chunk.length;
+    if (size > 15 * 1024 * 1024) throw new HttpError(413, 'too_large');
+    chunks.push(chunk);
+  }
+  if (!size) throw new HttpError(400, 'bad_image');
+  const fileName = `p${p.id}-${crypto.randomBytes(8).toString('hex')}${ext}`;
+  fs.writeFileSync(path.join(UPLOADS, fileName), Buffer.concat(chunks));
+  let original = '';
+  try { original = decodeURIComponent(String(req.headers['x-file-name'] || '')); } catch {}
+  const { lastInsertRowid } = db.prepare('INSERT INTO project_photos (project_id, file, mime, original_name, uploaded_by) VALUES (?, ?, ?, ?, ?)')
+    .run(p.id, fileName, mime, original.slice(0, 200), u.id);
+  return { id: Number(lastInsertRowid) };
+});
+route('GET', '/api/photos/:id', (req, p, res) => {
+  requireUser(req);
+  const ph = db.prepare('SELECT * FROM project_photos WHERE id = ?').get(p.id);
+  if (!ph) throw new HttpError(404, 'not_found');
+  const full = path.join(UPLOADS, ph.file);
+  if (!fs.existsSync(full)) throw new HttpError(404, 'not_found');
+  res.writeHead(200, { 'Content-Type': ph.mime, 'Cache-Control': 'private, max-age=86400', 'X-Content-Type-Options': 'nosniff' });
+  fs.createReadStream(full).pipe(res);
+});
+route('DELETE', '/api/photos/:id', (req, p) => {
+  requireUser(req);
+  const ph = db.prepare('SELECT * FROM project_photos WHERE id = ?').get(p.id);
+  if (!ph) throw new HttpError(404, 'not_found');
+  db.prepare('DELETE FROM project_photos WHERE id = ?').run(p.id);
+  fs.rm(path.join(UPLOADS, ph.file), { force: true }, () => {});
   return { ok: true };
 });
 
@@ -463,7 +547,8 @@ const server = http.createServer(async (req, res) => {
   const pathname = new URL(req.url, 'http://x').pathname;
   if (!pathname.startsWith('/api/')) return serveStatic(req, res);
   // Запросы, меняющие данные, принимаем только как JSON — это защищает от подделки форм с чужих сайтов
-  if (req.method !== 'GET' && !(req.headers['content-type'] || '').includes('application/json')) {
+  const isPhotoUpload = req.method === 'POST' && /^\/api\/projects\/\d+\/photos$/.test(pathname);
+  if (req.method !== 'GET' && !isPhotoUpload && !(req.headers['content-type'] || '').includes('application/json')) {
     return send(res, 415, { error: 'json_only' });
   }
   const r = routes.find((x) => x.method === req.method && x.re.test(pathname));

@@ -234,3 +234,65 @@ dialog .buttons { display: flex; justify-content: flex-end; gap: 8px; margin-top
   .picker-bar { flex-direction: column; }
   .picker-bar select { flex: none; width: 100%; }
 }
+
+/* Вкладки проекта */
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin: -6px 0 18px; overflow-x: auto; }
+.tabs a { padding: 10px 14px; color: var(--text-2); text-decoration: none; border-bottom: 2px solid transparent; margin-bottom: -1px; white-space: nowrap; }
+.tabs a:hover { color: var(--text); }
+.tabs a.on { color: var(--text); border-bottom-color: var(--red); font-weight: 500; }
+.tabs .count { display: inline-block; min-width: 18px; padding: 0 5px; font-size: 11px; line-height: 18px; text-align: center; border-radius: 9px; background: var(--tag-bg); color: var(--text-2); }
+button.danger { color: var(--red); border-color: var(--red-soft); }
+button.danger:hover { background: var(--red-soft); border-color: var(--red); }
+.empty-state { text-align: center; padding: 48px 20px; }
+
+/* Маржа и НДС проекта */
+.calc-settings { display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-start; }
+.calc-setting { display: flex; flex-direction: column; gap: 6px; }
+.calc-setting .label { font-size: 12px; color: var(--text-2); }
+.calc-setting label { margin: 0; }
+.margin-box { display: flex; align-items: center; gap: 6px; }
+.margin-box span { font-size: 18px; color: var(--text-2); }
+.margin-box input { width: 90px; font-size: 16px; font-weight: 600; text-align: center; }
+.switch { display: inline-flex; align-items: center; gap: 10px; height: 36px; padding: 0 14px 0 4px; border-radius: 18px; }
+.switch .knob { width: 44px; height: 26px; border-radius: 13px; background: var(--line); position: relative; transition: background .15s; flex: none; }
+.switch .knob::after { content: ''; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25); transition: transform .15s; }
+.switch.on .knob { background: var(--ok); }
+.switch.on .knob::after { transform: translateX(18px); }
+.switch .switch-text { font-weight: 500; }
+
+/* Формы клиента и проекта */
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.form-grid .wide { grid-column: 1 / -1; }
+textarea { width: 100%; padding: 8px 10px; font: inherit; color: var(--text); background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); resize: vertical; }
+textarea:focus { outline: none; border-color: var(--red); box-shadow: 0 0 0 3px var(--red-soft); }
+[data-theme="dark"] textarea { background: #18181a; }
+.form-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 14px; }
+.client-links { display: inline-flex; gap: 10px; }
+.btn-link { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); text-decoration: none; }
+.btn-link:hover { border-color: var(--border-hover); }
+
+/* Фото */
+.photos-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 8px; }
+.photos-head h2 { margin: 0; }
+.upload-btn { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; margin: 0; background: var(--red); color: #fff; border-radius: var(--radius); cursor: pointer; font-size: 14px; font-weight: 500; }
+.upload-btn:hover { background: var(--red-hover); }
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; margin-top: 8px; }
+.gallery figure { position: relative; margin: 0; aspect-ratio: 4 / 3; border-radius: 10px; overflow: hidden; background: var(--bg); border: 1px solid var(--line); }
+.gallery img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gallery .ph-del { position: absolute; top: 6px; right: 6px; background: rgba(0,0,0,.55); color: #fff; }
+.gallery .ph-del:hover { background: var(--red); color: #fff; }
+.gallery .empty { grid-column: 1 / -1; }
+.print-only { display: none; }
+@media print {
+  .print-only { display: block; margin-bottom: 10px; }
+  .tabs, .calc-settings { display: none !important; }
+}
+
+/* Узкий экран: колонка не растягивается широкими таблицами (они прокручиваются внутри себя) */
+@media (max-width: 800px) {
+  .layout { grid-template-columns: minmax(0, 1fr); }
+  .main, .sidebar { min-width: 0; }
+  .calc-settings { gap: 16px; }
+  .page-head { flex-wrap: wrap; }
+}
+.tabs { overflow-y: hidden; scrollbar-width: thin; }
