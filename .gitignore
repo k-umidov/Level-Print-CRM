@@ -1,0 +1,13 @@
+# База данных: сотрудники, пароли, сессии, проекты — никогда не загружать
+data/
+*.db
+*.db-shm
+*.db-wal
+
+# Служебное
+node_modules/
+.claude/
+*.log
+.env
+.DS_Store
+Thumbs.db

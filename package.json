@@ -1,0 +1,11 @@
+{
+  "name": "levelprint-crm",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CRM LevelPrint: материалы, проекты, калькуляция",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --no-warnings server.js"
+  },
+  "engines": { "node": ">=22.5" }
+}

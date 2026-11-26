@@ -1,0 +1,2221 @@
+[
+ {
+  "name": "Banner 300 gram thickness, back side is black (3200 mm, white)",
+  "unit": "рулон",
+  "price": 2215000,
+  "kind": "material",
+  "category": "Баннер"
+ },
+ {
+  "name": "Banner 300 gram thickness, back side is black (3.20*70m)",
+  "unit": "рулон",
+  "price": 2150000,
+  "kind": "material",
+  "category": "Баннер"
+ },
+ {
+  "name": "Banner oq matoviy 1.12*70m (1.12*70m, white)",
+  "unit": "рулон",
+  "price": 750000,
+  "kind": "material",
+  "category": "Баннер"
+ },
+ {
+  "name": "Banner oq matoviy ch/p (3.2*70m)",
+  "unit": "рулон",
+  "price": 2052000,
+  "kind": "material",
+  "category": "Баннер"
+ },
+ {
+  "name": "Banner 1.32*70 meter oq glansoviy ch/p",
+  "unit": "рулон",
+  "price": 721000,
+  "kind": "material",
+  "category": "Баннер"
+ },
+ {
+  "name": "Banner oq mat. ch/p 3.20*70m",
+  "unit": "рулон",
+  "price": 2035000,
+  "kind": "material",
+  "category": "Баннер"
+ },
+ {
+  "name": "Banner oq mat. B/p 1.12*70m",
+  "unit": "рулон",
+  "price": 610000,
+  "kind": "material",
+  "category": "Баннер"
+ },
+ {
+  "name": "Banner oq mat. ch/p 2.20*70m",
+  "unit": "рулон",
+  "price": 1473000,
+  "kind": "material",
+  "category": "Баннер"
+ },
+ {
+  "name": "Banner qora padlojka 2.20*70m",
+  "unit": "рулон",
+  "price": 1275000,
+  "kind": "material",
+  "category": "Баннер"
+ },
+ {
+  "name": "Banner qora padlojka matoviy 3.20 lik",
+  "unit": "шт",
+  "price": 1849848,
+  "kind": "material",
+  "category": "Баннер"
+ },
+ {
+  "name": "Banner qora padlojka 2.6*70m",
+  "unit": "рулон",
+  "price": 1516060,
+  "kind": "material",
+  "category": "Баннер"
+ },
+ {
+  "name": "vinyl 3.2*50m (3200 mm, white)",
+  "unit": "рулон",
+  "price": 5250000,
+  "kind": "material",
+  "category": "Винил"
+ },
+ {
+  "name": "Fomeks 5mm (1.20*2.40)",
+  "unit": "лист",
+  "price": 146300,
+  "kind": "material",
+  "category": "Фомекс"
+ },
+ {
+  "name": "Fomiks 5mm",
+  "unit": "лист",
+  "price": 137000,
+  "kind": "material",
+  "category": "Фомекс"
+ },
+ {
+  "name": "Fomeks 3mm (1.20*2.40)",
+  "unit": "лист",
+  "price": 114400,
+  "kind": "material",
+  "category": "Фомекс"
+ },
+ {
+  "name": "Fomeks 4mm (1.20*2.40)",
+  "unit": "лист",
+  "price": 132000,
+  "kind": "material",
+  "category": "Фомекс"
+ },
+ {
+  "name": "Fomeks 8mm (1.20*2.40)",
+  "unit": "лист",
+  "price": 242000,
+  "kind": "material",
+  "category": "Фомекс"
+ },
+ {
+  "name": "Fomeks 8mm",
+  "unit": "лист",
+  "price": 266805,
+  "kind": "material",
+  "category": "Фомекс"
+ },
+ {
+  "name": "Fomeks 8mm 1.20*2.40",
+  "unit": "лист",
+  "price": 209000,
+  "kind": "material",
+  "category": "Фомекс"
+ },
+ {
+  "name": "Fomeks 1sm",
+  "unit": "шт",
+  "price": 344500,
+  "kind": "material",
+  "category": "Фомекс"
+ },
+ {
+  "name": "Fomeks 16mm (1.20*2.40)",
+  "unit": "шт",
+  "price": 485000,
+  "kind": "material",
+  "category": "Фомекс"
+ },
+ {
+  "name": "Fomeks 4mm",
+  "unit": "лист",
+  "price": 121968,
+  "kind": "material",
+  "category": "Фомекс"
+ },
+ {
+  "name": "Fomiks 16mm 1.20*2.40",
+  "unit": "лист",
+  "price": 485000,
+  "kind": "material",
+  "category": "Фомекс"
+ },
+ {
+  "name": "Fomeks 5mm qattig'idan",
+  "unit": "лист",
+  "price": 169400,
+  "kind": "material",
+  "category": "Фомекс"
+ },
+ {
+  "name": "Orakal, back side black, 1,27*50m",
+  "unit": "шт",
+  "price": 1057752.5,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal, back side black, 1,07*50m",
+  "unit": "шт",
+  "price": 837247.5,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal setka 1,27*50m",
+  "unit": "шт",
+  "price": 1267000,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal shaffov",
+  "unit": "шт",
+  "price": 862000,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal 3032 siniy mat (meteri)",
+  "unit": "м",
+  "price": 35000,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal siniy svetootrajayushiy (meteri)",
+  "unit": "м",
+  "price": 85000,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Kumush Orakal usti dag'al #9287 (meteri)",
+  "unit": "м",
+  "price": 58500,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal kulrang (серий матовый) meteri",
+  "unit": "м",
+  "price": 50000,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal (бордовый матовый) meteri",
+  "unit": "м",
+  "price": 50000,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal (бежевый матовый) № 3370 meteri",
+  "unit": "м",
+  "price": 35000,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal №8196 bronza",
+  "unit": "м",
+  "price": 58000,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal (1*50m)qora, matoviy",
+  "unit": "рулон",
+  "price": 761500,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal zoloto #9283 tsarapina",
+  "unit": "м",
+  "price": 59000,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal chorniy glyans",
+  "unit": "м",
+  "price": 38000,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal siniy #3007",
+  "unit": "м",
+  "price": 35000,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal korichneviy glyans #3077",
+  "unit": "м",
+  "price": 39700,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal beliy glyans",
+  "unit": "м",
+  "price": 39700,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal #3172",
+  "unit": "м",
+  "price": 39700,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal siniy mat #3032",
+  "unit": "м",
+  "price": 39700,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal oq mat. Ch/p 1.27*50m",
+  "unit": "рулон",
+  "price": 742000,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal oq mat. Ch/p 1.07*50m",
+  "unit": "рулон",
+  "price": 767000,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal qora matoviy",
+  "unit": "м",
+  "price": 43000,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal qora glansoviy 3038",
+  "unit": "м",
+  "price": 39700,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal oq matoviy ch/p 1.27*50m",
+  "unit": "рулон",
+  "price": 914000,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal oranjev #3161",
+  "unit": "м",
+  "price": 397000,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal oq mat. Ch/p 1.52*50m",
+  "unit": "рулон",
+  "price": 1090000,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal qizil #3019",
+  "unit": "м",
+  "price": 39700,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal ko'k #3091",
+  "unit": "м",
+  "price": 39700,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal och ko'k #3007",
+  "unit": "м",
+  "price": 39700,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal qizil glyans #3220",
+  "unit": "м",
+  "price": 39700,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal ko'k #3208",
+  "unit": "м",
+  "price": 39200,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal qizil #3014",
+  "unit": "м",
+  "price": 39700,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal #3162",
+  "unit": "м",
+  "price": 39700,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal oq ch/p 152sm lik",
+  "unit": "шт",
+  "price": 1080000,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal yashil 3154-3165",
+  "unit": "м",
+  "price": 39200,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal kumush matoviy",
+  "unit": "м",
+  "price": 64000,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal setka 1,52*50m",
+  "unit": "шт",
+  "price": 1474000,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal oltin rangli gransoviy",
+  "unit": "шт",
+  "price": 67000,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal tilla K8198 rang motoviy",
+  "unit": "м",
+  "price": 58000,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal glansoviy olov rang (3017)",
+  "unit": "м",
+  "price": 35000,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal 3037 glansoviy",
+  "unit": "м",
+  "price": 35000,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Orakal qora padlojka matoviy 1.07*50 meter",
+  "unit": "м",
+  "price": 735960,
+  "kind": "material",
+  "category": "Оракал"
+ },
+ {
+  "name": "Akril shaffof (2mm)",
+  "unit": "лист",
+  "price": 386000,
+  "kind": "material",
+  "category": "Акрил"
+ },
+ {
+  "name": "Akril shaffof (3mm)",
+  "unit": "лист",
+  "price": 411000,
+  "kind": "material",
+  "category": "Акрил"
+ },
+ {
+  "name": "Akril oq (3mm)",
+  "unit": "лист",
+  "price": 465000,
+  "kind": "material",
+  "category": "Акрил"
+ },
+ {
+  "name": "Akril tilla (3mm)",
+  "unit": "лист",
+  "price": 639000,
+  "kind": "material",
+  "category": "Акрил"
+ },
+ {
+  "name": "Akril ko'k #835 (list)",
+  "unit": "лист",
+  "price": 390000,
+  "kind": "material",
+  "category": "Акрил"
+ },
+ {
+  "name": "Akril oranjiviy #3041",
+  "unit": "шт",
+  "price": 621000,
+  "kind": "material",
+  "category": "Акрил"
+ },
+ {
+  "name": "Akril #3030 (1.20*2.40)",
+  "unit": "лист",
+  "price": 589333.3,
+  "kind": "material",
+  "category": "Акрил"
+ },
+ {
+  "name": "Akril #617 (1.20*2.40)",
+  "unit": "лист",
+  "price": 589333.3,
+  "kind": "material",
+  "category": "Акрил"
+ },
+ {
+  "name": "Akril oq",
+  "unit": "шт",
+  "price": 554000,
+  "kind": "material",
+  "category": "Акрил"
+ },
+ {
+  "name": "Akril oq 1.20*2.40 (3mm)",
+  "unit": "лист",
+  "price": 393000,
+  "kind": "material",
+  "category": "Акрил"
+ },
+ {
+  "name": "Akril qora 3mm 1.20*2.40 (1 list)",
+  "unit": "лист",
+  "price": 406000,
+  "kind": "material",
+  "category": "Акрил"
+ },
+ {
+  "name": "Akril qizil #136 (1.20*2.40)",
+  "unit": "лист",
+  "price": 465000,
+  "kind": "material",
+  "category": "Акрил"
+ },
+ {
+  "name": "Akril prozr. 2mm 1.20*2.40",
+  "unit": "лист",
+  "price": 431000,
+  "kind": "material",
+  "category": "Акрил"
+ },
+ {
+  "name": "Akril qizil #8118 (3mm)",
+  "unit": "шт",
+  "price": 494000,
+  "kind": "material",
+  "category": "Акрил"
+ },
+ {
+  "name": "Akril qora (0.60m*1.20m)",
+  "unit": "лист",
+  "price": 496000,
+  "kind": "material",
+  "category": "Акрил"
+ },
+ {
+  "name": "Akril ko'k #327, 3mm",
+  "unit": "шт",
+  "price": 600000,
+  "kind": "material",
+  "category": "Акрил"
+ },
+ {
+  "name": "Akril sabzi rang 266",
+  "unit": "шт",
+  "price": 447216,
+  "kind": "material",
+  "category": "Акрил"
+ },
+ {
+  "name": "Akril qora",
+  "unit": "шт",
+  "price": 476000,
+  "kind": "material",
+  "category": "Акрил"
+ },
+ {
+  "name": "Akril oq #425 (1.20*2.40)",
+  "unit": "лист",
+  "price": 616000,
+  "kind": "material",
+  "category": "Акрил"
+ },
+ {
+  "name": "Balon kraska qora",
+  "unit": "шт",
+  "price": 16000,
+  "kind": "material",
+  "category": "Краски и растворители"
+ },
+ {
+  "name": "Kraska nitro ballon",
+  "unit": "шт",
+  "price": 16000,
+  "kind": "material",
+  "category": "Краски и растворители"
+ },
+ {
+  "name": "Balon qora kraska",
+  "unit": "шт",
+  "price": 30000,
+  "kind": "material",
+  "category": "Краски и растворители"
+ },
+ {
+  "name": "Diod xolod 1 oram (200 dona)",
+  "unit": "шт",
+  "price": 122000,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "Diod tepliy (200 dona)",
+  "unit": "шт",
+  "price": 129800,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "Diod 5054 xolodniy",
+  "unit": "шт",
+  "price": 124600,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "Diod 220 WT",
+  "unit": "шт",
+  "price": 300000,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "Super kley (30sht=1 pochka)",
+  "unit": "шт",
+  "price": 210000,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "Diod LED",
+  "unit": "м",
+  "price": 8000,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "Diod oq (beliy) (200 dona)",
+  "unit": "пачка",
+  "price": 126000,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "Diod kvadrat 2202wt",
+  "unit": "шт",
+  "price": 3000,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "Diod oq rang (200sht) (200 dona)",
+  "unit": "пачка",
+  "price": 300,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "Diod oq (200 dona)",
+  "unit": "пачка",
+  "price": 125000,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "Diod 5054",
+  "unit": "пачка",
+  "price": 114345,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "Diod lenta shlang+ vilka",
+  "unit": "м",
+  "price": 14000,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "DIod lenta Anvarakani proektlari uchun",
+  "unit": "м",
+  "price": 20000,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "Brus reyka 4*3 tavrika (5 pochka)",
+  "unit": "м",
+  "price": 7000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Brus reyka 3*2 tavrika (3 pochka)",
+  "unit": "м",
+  "price": 4296,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Brus reyka 3*4 (5 pochka)",
+  "unit": "м",
+  "price": 6977.6,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Reyka tubrika 3*4 (48 meter=1pochaka)",
+  "unit": "м",
+  "price": 1395.52,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Reyka",
+  "unit": "м",
+  "price": 8232,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "UV printerga kraska (i3200)",
+  "unit": "шт",
+  "price": 572727,
+  "kind": "material",
+  "category": "Краски и растворители"
+ },
+ {
+  "name": "Kraska sariq eko 1 litr",
+  "unit": "шт",
+  "price": 170000,
+  "kind": "material",
+  "category": "Краски и растворители"
+ },
+ {
+  "name": "ABC kumush list (2mm)",
+  "unit": "лист",
+  "price": 94000,
+  "kind": "material",
+  "category": "ABS и ПЭТ пластик"
+ },
+ {
+  "name": "ABC kumush list",
+  "unit": "шт",
+  "price": 127050,
+  "kind": "material",
+  "category": "ABS и ПЭТ пластик"
+ },
+ {
+  "name": "Bekprint glans 0.910*30",
+  "unit": "рулон",
+  "price": 650000,
+  "kind": "material",
+  "category": "Плёнки и бумага для печати"
+ },
+ {
+  "name": "Bekprint (0.914*30m)",
+  "unit": "рулон",
+  "price": 640000,
+  "kind": "material",
+  "category": "Плёнки и бумага для печати"
+ },
+ {
+  "name": "Pauk Euro",
+  "unit": "шт",
+  "price": 103000,
+  "kind": "material",
+  "category": "Конструкции"
+ },
+ {
+  "name": "Pauk Euro 0.75*1.75",
+  "unit": "лист",
+  "price": 85000,
+  "kind": "material",
+  "category": "Конструкции"
+ },
+ {
+  "name": "Pauk Euro 0.60*1.60",
+  "unit": "лист",
+  "price": 85000,
+  "kind": "material",
+  "category": "Конструкции"
+ },
+ {
+  "name": "Pauk Euro 1.80*0.80",
+  "unit": "лист",
+  "price": 85000,
+  "kind": "material",
+  "category": "Конструкции"
+ },
+ {
+  "name": "Pauk Alyuminoviy 1.75*0.75",
+  "unit": "лист",
+  "price": 90000,
+  "kind": "material",
+  "category": "Конструкции"
+ },
+ {
+  "name": "Pauk 1.75*0.75",
+  "unit": "лист",
+  "price": 85000,
+  "kind": "material",
+  "category": "Конструкции"
+ },
+ {
+  "name": "Strech Katta o'ram",
+  "unit": "шт",
+  "price": 200000,
+  "kind": "material",
+  "category": "Плёнки и бумага для печати"
+ },
+ {
+  "name": "Strech kottasi 1.36 lik",
+  "unit": "шт",
+  "price": 52000,
+  "kind": "material",
+  "category": "Плёнки и бумага для печати"
+ },
+ {
+  "name": "Tumanka 1.06*50m",
+  "unit": "рулон",
+  "price": 964000,
+  "kind": "material",
+  "category": "Плёнки и бумага для печати"
+ },
+ {
+  "name": "Montajka (1.20*50m)",
+  "unit": "рулон",
+  "price": 915000,
+  "kind": "material",
+  "category": "Плёнки и бумага для печати"
+ },
+ {
+  "name": "Tumanka 1.52m",
+  "unit": "м",
+  "price": 38000,
+  "kind": "material",
+  "category": "Плёнки и бумага для печати"
+ },
+ {
+  "name": "Tumanka 1.27*50m",
+  "unit": "рулон",
+  "price": 1317000,
+  "kind": "material",
+  "category": "Плёнки и бумага для печати"
+ },
+ {
+  "name": "Tumanka 1.52 eni",
+  "unit": "м",
+  "price": 37200,
+  "kind": "material",
+  "category": "Плёнки и бумага для печати"
+ },
+ {
+  "name": "Tumanka 1.07*50 m",
+  "unit": "рулон",
+  "price": 1294700,
+  "kind": "material",
+  "category": "Плёнки и бумага для печати"
+ },
+ {
+  "name": "Tumanka 1.52 lik",
+  "unit": "м",
+  "price": 40000,
+  "kind": "material",
+  "category": "Плёнки и бумага для печати"
+ },
+ {
+  "name": "A4 qog'oz 300gr oq matoviy pochka (A4/300gr)",
+  "unit": "шт",
+  "price": 45000,
+  "kind": "material",
+  "category": "Канцтовары"
+ },
+ {
+  "name": "Fayl plyonka",
+  "unit": "пачка",
+  "price": 35000,
+  "kind": "material",
+  "category": "Канцтовары"
+ },
+ {
+  "name": "A4 qog'oz 80gr oq matoviy pochka (a4/80gr)",
+  "unit": "шт",
+  "price": 50000,
+  "kind": "material",
+  "category": "Канцтовары"
+ },
+ {
+  "name": "Molyar skotch",
+  "unit": "шт",
+  "price": 16000,
+  "kind": "material",
+  "category": "Скотч и клей"
+ },
+ {
+  "name": "Montajka",
+  "unit": "м",
+  "price": 45000,
+  "kind": "material",
+  "category": "Скотч и клей"
+ },
+ {
+  "name": "Montajka 1.07*50m",
+  "unit": "рулон",
+  "price": 1159105.9,
+  "kind": "material",
+  "category": "Скотч и клей"
+ },
+ {
+  "name": "Fotoramka A3",
+  "unit": "м",
+  "price": 35000,
+  "kind": "material",
+  "category": "Канцтовары"
+ },
+ {
+  "name": "Ramka 70*80",
+  "unit": "шт",
+  "price": 173600,
+  "kind": "material",
+  "category": "Канцтовары"
+ },
+ {
+  "name": "Termos (uv pechati bilan)",
+  "unit": "шт",
+  "price": 84000,
+  "kind": "material",
+  "category": "Хозтовары и прочее"
+ },
+ {
+  "name": "2x Akfix kley",
+  "unit": "шт",
+  "price": 70000,
+  "kind": "material",
+  "category": "Скотч и клей"
+ },
+ {
+  "name": "Aktiv kley dvux komplekt",
+  "unit": "шт",
+  "price": 66000,
+  "kind": "material",
+  "category": "Скотч и клей"
+ },
+ {
+  "name": "Aktiv kley 2-x kom.",
+  "unit": "шт",
+  "price": 60000,
+  "kind": "material",
+  "category": "Скотч и клей"
+ },
+ {
+  "name": "Ugalok montajniy (katta)",
+  "unit": "шт",
+  "price": 2000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Ugalok katta",
+  "unit": "шт",
+  "price": 3000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Balgarka disk",
+  "unit": "шт",
+  "price": 5000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Samorez metal uchun",
+  "unit": "кг",
+  "price": 37500,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Samorez qora 75, 80, 100 talik",
+  "unit": "кг",
+  "price": 32000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Samorez qora 70 talik",
+  "unit": "кг",
+  "price": 40000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Samarez qora",
+  "unit": "кг",
+  "price": 42000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Oq samarez 16mm",
+  "unit": "кг",
+  "price": 40000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Oq samarez 20mm",
+  "unit": "кг",
+  "price": 40000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Delfin latta",
+  "unit": "шт",
+  "price": 12000,
+  "kind": "material",
+  "category": "Хозтовары и прочее"
+ },
+ {
+  "name": "Perchatka",
+  "unit": "шт",
+  "price": 4500,
+  "kind": "material",
+  "category": "Хозтовары и прочее"
+ },
+ {
+  "name": "Perchatka qalin",
+  "unit": "шт",
+  "price": 5000,
+  "kind": "material",
+  "category": "Хозтовары и прочее"
+ },
+ {
+  "name": "Perchatka lattali",
+  "unit": "шт",
+  "price": 4000,
+  "kind": "material",
+  "category": "Хозтовары и прочее"
+ },
+ {
+  "name": "Med perchatka",
+  "unit": "шт",
+  "price": 3000,
+  "kind": "material",
+  "category": "Хозтовары и прочее"
+ },
+ {
+  "name": "Elektrod svarka uchun 1 donasi",
+  "unit": "шт",
+  "price": 1000,
+  "kind": "material",
+  "category": "Электрика"
+ },
+ {
+  "name": "Elektrod 3 lik",
+  "unit": "шт",
+  "price": 1000,
+  "kind": "material",
+  "category": "Электрика"
+ },
+ {
+  "name": "Indikator otverka donasi",
+  "unit": "шт",
+  "price": 6000,
+  "kind": "material",
+  "category": "Электрика"
+ },
+ {
+  "name": "Xamut plastmassa 20sm",
+  "unit": "пачка",
+  "price": 20000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Xamut plasmassa 4.8*500mm",
+  "unit": "пачка",
+  "price": 30000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Xamut plasmassa 3,6х400mm",
+  "unit": "пачка",
+  "price": 18000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Elektr kabel Oq 0.75*2",
+  "unit": "м",
+  "price": 5000,
+  "kind": "material",
+  "category": "Электрика"
+ },
+ {
+  "name": "Elektr kabel Proz (shaffof)",
+  "unit": "м",
+  "price": 5000,
+  "kind": "material",
+  "category": "Электрика"
+ },
+ {
+  "name": "Elektr Kabel 1.0*2",
+  "unit": "м",
+  "price": 6000,
+  "kind": "material",
+  "category": "Электрика"
+ },
+ {
+  "name": "Elektr kabel dlya bukv",
+  "unit": "бухта",
+  "price": 80000,
+  "kind": "material",
+  "category": "Электрика"
+ },
+ {
+  "name": "Elektr kabel 1.5*2",
+  "unit": "м",
+  "price": 8000,
+  "kind": "material",
+  "category": "Электрика"
+ },
+ {
+  "name": "Elektr kabel qora 1.5*2",
+  "unit": "м",
+  "price": 6467,
+  "kind": "material",
+  "category": "Электрика"
+ },
+ {
+  "name": "Elektr kabel shaffof",
+  "unit": "м",
+  "price": 7000,
+  "kind": "material",
+  "category": "Электрика"
+ },
+ {
+  "name": "Elektro kabel 2*1.5mm",
+  "unit": "м",
+  "price": 10000,
+  "kind": "material",
+  "category": "Электрика"
+ },
+ {
+  "name": "Metal profil 2*4",
+  "unit": "м",
+  "price": 28000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Metal profil 2.2",
+  "unit": "м",
+  "price": 18000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Stoyka metal konstruksiya",
+  "unit": "шт",
+  "price": 200000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Dumaloq metal konstruksiya",
+  "unit": "шт",
+  "price": 100000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Pet 1mm",
+  "unit": "лист",
+  "price": 95000,
+  "kind": "material",
+  "category": "ABS и ПЭТ пластик"
+ },
+ {
+  "name": "Ilgak, petlya chtender uchun",
+  "unit": "шт",
+  "price": 5000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Razbovitel",
+  "unit": "шт",
+  "price": 18000,
+  "kind": "material",
+  "category": "Краски и растворители"
+ },
+ {
+  "name": "Foto ofset 28*64 pechat",
+  "unit": "шт",
+  "price": 40000,
+  "kind": "service",
+  "category": "Услуги"
+ },
+ {
+  "name": "Foto A5, A4 pechat",
+  "unit": "шт",
+  "price": 18333.33,
+  "kind": "service",
+  "category": "Услуги"
+ },
+ {
+  "name": "LED blok pitaniya 100W-12, input: 180-264 AC, output: DC 12V 8.3A",
+  "unit": "шт",
+  "price": 65000,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "Blok pitaniya 40A",
+  "unit": "шт",
+  "price": 157000,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "Blok pitaniya 16A",
+  "unit": "шт",
+  "price": 90000,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "Blok pitaniya 12A",
+  "unit": "шт",
+  "price": 25000,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "Blok pitaniya 50A",
+  "unit": "шт",
+  "price": 207000,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "Blok pitaniya 25A",
+  "unit": "шт",
+  "price": 110000,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "Blok pitaniya ichki 33 Amperlik",
+  "unit": "шт",
+  "price": 100000,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "Distilirovannaya voda (1.5L)",
+  "unit": "шт",
+  "price": 4000,
+  "kind": "material",
+  "category": "Краски и растворители"
+ },
+ {
+  "name": "Distilirovannaya voda UF-printer (1.5L)",
+  "unit": "шт",
+  "price": 5000,
+  "kind": "material",
+  "category": "Краски и растворители"
+ },
+ {
+  "name": "Olmos sverlo 8mm",
+  "unit": "шт",
+  "price": 6000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Olmos bur 8mm",
+  "unit": "шт",
+  "price": 12000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Olmos sverlo 6mm",
+  "unit": "шт",
+  "price": 1500,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Skobi dlya steplera",
+  "unit": "шт",
+  "price": 6000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Alyukabond 2.40*1.20 #8827",
+  "unit": "шт",
+  "price": 414400,
+  "kind": "material",
+  "category": "Алюкобонд"
+ },
+ {
+  "name": "Alyukabond 2.40*1.20 #8805 oq glyans",
+  "unit": "шт",
+  "price": 414400,
+  "kind": "material",
+  "category": "Алюкобонд"
+ },
+ {
+  "name": "Alyukabond #8842 (1.20*2.40)",
+  "unit": "шт",
+  "price": 504000,
+  "kind": "material",
+  "category": "Алюкобонд"
+ },
+ {
+  "name": "Alyukabond #9928 1.20*2.40",
+  "unit": "шт",
+  "price": 435000,
+  "kind": "material",
+  "category": "Алюкобонд"
+ },
+ {
+  "name": "Marilka",
+  "unit": "шт",
+  "price": 10000,
+  "kind": "material",
+  "category": "Канцтовары"
+ },
+ {
+  "name": "Kistichka molyar o'rta",
+  "unit": "шт",
+  "price": 12000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Kistichka",
+  "unit": "шт",
+  "price": 7000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Adapter 25A",
+  "unit": "шт",
+  "price": 91200,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "Adapter 40A (tashqi)",
+  "unit": "шт",
+  "price": 157000,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "Adapter 40A (ichki)",
+  "unit": "шт",
+  "price": 157000,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "Lesa komplekt 2ta taxtasi bilan",
+  "unit": "комплект",
+  "price": 10000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Rekel ko'k oddiy 1 dona",
+  "unit": "шт",
+  "price": 12000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Rakel qora magnitniy 1 dona",
+  "unit": "шт",
+  "price": 32000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Lezviya kotta-kichkina (2+3)",
+  "unit": "шт",
+  "price": 11000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Kotta lezviya \"Deli\"",
+  "unit": "шт",
+  "price": 23000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Kichkina lezviya \"Deli\"",
+  "unit": "шт",
+  "price": 13000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Lezviya kotta-kichkina",
+  "unit": "шт",
+  "price": 13000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Lezviya kottasi",
+  "unit": "шт",
+  "price": 24000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Kichkina lezviya",
+  "unit": "шт",
+  "price": 6000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Pichoq kichkina",
+  "unit": "шт",
+  "price": 16500,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Pichoq konselyar kichkina",
+  "unit": "шт",
+  "price": 15000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Pichoq akril kesish uchun",
+  "unit": "шт",
+  "price": 20000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Qulf darvozaga",
+  "unit": "шт",
+  "price": 43000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Marli",
+  "unit": "м",
+  "price": 5000,
+  "kind": "material",
+  "category": "Хозтовары и прочее"
+ },
+ {
+  "name": "Marli (5*2m)",
+  "unit": "м",
+  "price": 5000,
+  "kind": "material",
+  "category": "Хозтовары и прочее"
+ },
+ {
+  "name": "Marli 5 meterlik",
+  "unit": "м",
+  "price": 18000,
+  "kind": "material",
+  "category": "Хозтовары и прочее"
+ },
+ {
+  "name": "Temir babochka (anker bolt)",
+  "unit": "шт",
+  "price": 2000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Pol latta",
+  "unit": "шт",
+  "price": 15000,
+  "kind": "material",
+  "category": "Хозтовары и прочее"
+ },
+ {
+  "name": "Shprits",
+  "unit": "шт",
+  "price": 1000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Kraska \"Epson\" 673 och ko'k",
+  "unit": "шт",
+  "price": 160000,
+  "kind": "material",
+  "category": "Краски и растворители"
+ },
+ {
+  "name": "Kraska \"Epson\" 673 to'q ko'k",
+  "unit": "шт",
+  "price": 120000,
+  "kind": "material",
+  "category": "Краски и растворители"
+ },
+ {
+  "name": "Kraska \"Epson\" 673 sariq",
+  "unit": "шт",
+  "price": 120000,
+  "kind": "material",
+  "category": "Краски и растворители"
+ },
+ {
+  "name": "Distantsion bold",
+  "unit": "шт",
+  "price": 2250,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Distantsion bold 16*30",
+  "unit": "шт",
+  "price": 2208.33,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Distantsionniy bolt 16*3",
+  "unit": "шт",
+  "price": 2000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Fotobumaga 160gr glans",
+  "unit": "пачка",
+  "price": 30000,
+  "kind": "material",
+  "category": "Плёнки и бумага для печати"
+ },
+ {
+  "name": "Fotobumaga 300gr mat",
+  "unit": "пачка",
+  "price": 47000,
+  "kind": "material",
+  "category": "Плёнки и бумага для печати"
+ },
+ {
+  "name": "Fotobumaga 300gr glyansoviy",
+  "unit": "пачка",
+  "price": 25000,
+  "kind": "material",
+  "category": "Плёнки и бумага для печати"
+ },
+ {
+  "name": "A4 qog'oz",
+  "unit": "пачка",
+  "price": 52000,
+  "kind": "material",
+  "category": "Плёнки и бумага для печати"
+ },
+ {
+  "name": "A4 qog'oz glansiviy 160 gramlik",
+  "unit": "пачка",
+  "price": 30000,
+  "kind": "material",
+  "category": "Плёнки и бумага для печати"
+ },
+ {
+  "name": "Pistolet jidkiy gvozd va kley uchun",
+  "unit": "пачка",
+  "price": 70000,
+  "kind": "material",
+  "category": "Хозтовары и прочее"
+ },
+ {
+  "name": "Skotch katta",
+  "unit": "шт",
+  "price": 34000,
+  "kind": "material",
+  "category": "Скотч и клей"
+ },
+ {
+  "name": "2-x staronniy skotch qizil",
+  "unit": "шт",
+  "price": 7000,
+  "kind": "material",
+  "category": "Скотч и клей"
+ },
+ {
+  "name": "Qizil rangli skotch 1 sm",
+  "unit": "шт",
+  "price": 6000,
+  "kind": "material",
+  "category": "Скотч и клей"
+ },
+ {
+  "name": "Qora skotch",
+  "unit": "шт",
+  "price": 15000,
+  "kind": "material",
+  "category": "Скотч и клей"
+ },
+ {
+  "name": "Qizil skotch",
+  "unit": "шт",
+  "price": 15000,
+  "kind": "material",
+  "category": "Скотч и клей"
+ },
+ {
+  "name": "Sariq skotch",
+  "unit": "шт",
+  "price": 7000,
+  "kind": "material",
+  "category": "Скотч и клей"
+ },
+ {
+  "name": "Skotch prozrachniy 48*50sm lik",
+  "unit": "шт",
+  "price": 20000,
+  "kind": "material",
+  "category": "Скотч и клей"
+ },
+ {
+  "name": "Skotch prozrachniy 6.0*150",
+  "unit": "шт",
+  "price": 30000,
+  "kind": "material",
+  "category": "Скотч и клей"
+ },
+ {
+  "name": "Banner skotch 3mm lik",
+  "unit": "шт",
+  "price": 14000,
+  "kind": "material",
+  "category": "Скотч и клей"
+ },
+ {
+  "name": "2-x staronniy skotch 3mm lik",
+  "unit": "шт",
+  "price": 6000,
+  "kind": "material",
+  "category": "Скотч и клей"
+ },
+ {
+  "name": "Molyarniy skotch",
+  "unit": "шт",
+  "price": 8000,
+  "kind": "material",
+  "category": "Скотч и клей"
+ },
+ {
+  "name": "Petlya shtender uchun",
+  "unit": "шт",
+  "price": 3000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Korab dlya el. Kabel",
+  "unit": "м",
+  "price": 2500,
+  "kind": "material",
+  "category": "Электрика"
+ },
+ {
+  "name": "Kabel 2*1.5",
+  "unit": "м",
+  "price": 7600,
+  "kind": "material",
+  "category": "Электрика"
+ },
+ {
+  "name": "Kabel prozrachniy",
+  "unit": "м",
+  "price": 4500,
+  "kind": "material",
+  "category": "Электрика"
+ },
+ {
+  "name": "Kabel 2*1.5 lik",
+  "unit": "м",
+  "price": 10000,
+  "kind": "material",
+  "category": "Электрика"
+ },
+ {
+  "name": "Kabel 0.75*2",
+  "unit": "м",
+  "price": 6000,
+  "kind": "material",
+  "category": "Электрика"
+ },
+ {
+  "name": "Shampun",
+  "unit": "шт",
+  "price": 23000,
+  "kind": "material",
+  "category": "Хозтовары и прочее"
+ },
+ {
+  "name": "Qo'l Arra",
+  "unit": "шт",
+  "price": 57000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Izo lenta oq va qora",
+  "unit": "шт",
+  "price": 5000,
+  "kind": "material",
+  "category": "Электрика"
+ },
+ {
+  "name": "Izolenta",
+  "unit": "шт",
+  "price": 5000,
+  "kind": "material",
+  "category": "Электрика"
+ },
+ {
+  "name": "Kalit yasatish",
+  "unit": "шт",
+  "price": 10000,
+  "kind": "service",
+  "category": "Услуги"
+ },
+ {
+  "name": "Brizgalka",
+  "unit": "шт",
+  "price": 64000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Kraska oq litrli",
+  "unit": "шт",
+  "price": 44600,
+  "kind": "material",
+  "category": "Краски и растворители"
+ },
+ {
+  "name": "Koler",
+  "unit": "шт",
+  "price": 9000,
+  "kind": "material",
+  "category": "Краски и растворители"
+ },
+ {
+  "name": "Bochka plastmassoviy 200 litr",
+  "unit": "шт",
+  "price": 155000,
+  "kind": "material",
+  "category": "Хозтовары и прочее"
+ },
+ {
+  "name": "Qum 1 qopi",
+  "unit": "шт",
+  "price": 5500,
+  "kind": "material",
+  "category": "Хозтовары и прочее"
+ },
+ {
+  "name": "Uroven 80 sm lik",
+  "unit": "шт",
+  "price": 85000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "UV pechat ABSga",
+  "unit": "шт",
+  "price": 168000,
+  "kind": "service",
+  "category": "Услуги"
+ },
+ {
+  "name": "UV pechat tkan",
+  "unit": "м",
+  "price": 201000,
+  "kind": "service",
+  "category": "Услуги"
+ },
+ {
+  "name": "Vishka",
+  "unit": "час",
+  "price": 400000,
+  "kind": "service",
+  "category": "Услуги"
+ },
+ {
+  "name": "Gazel oyna tashidigan",
+  "unit": "шт",
+  "price": 350000,
+  "kind": "service",
+  "category": "Услуги"
+ },
+ {
+  "name": "Chopik 6-li",
+  "unit": "шт",
+  "price": 10000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Chopik 8-li",
+  "unit": "шт",
+  "price": 10000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Light box profil",
+  "unit": "м",
+  "price": 112000,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "Almazniy Bura 6 lik",
+  "unit": "шт",
+  "price": 4400,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Almazniy Bura 8 lik",
+  "unit": "шт",
+  "price": 4400,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Almazniy bura 13 talik",
+  "unit": "шт",
+  "price": 13000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "UV material 3.2 meterlik eniga",
+  "unit": "м²",
+  "price": 93750,
+  "kind": "material",
+  "category": "Услуги"
+ },
+ {
+  "name": "Material chetiga rezinka tikish xizmati",
+  "unit": "м²",
+  "price": 13000,
+  "kind": "service",
+  "category": "Услуги"
+ },
+ {
+  "name": "UV material 2.1 meterlik",
+  "unit": "м²",
+  "price": 47600,
+  "kind": "material",
+  "category": "Услуги"
+ },
+ {
+  "name": "UV material pechati bilan",
+  "unit": "м²",
+  "price": 150000,
+  "kind": "material",
+  "category": "Услуги"
+ },
+ {
+  "name": "Titan jidkiy kley",
+  "unit": "шт",
+  "price": 60000,
+  "kind": "material",
+  "category": "Скотч и клей"
+ },
+ {
+  "name": "Almaznaya karonka 20mm",
+  "unit": "шт",
+  "price": 20000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Almaznaya karonka 10mm lik",
+  "unit": "шт",
+  "price": 10000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Rastvoritel",
+  "unit": "шт",
+  "price": 35000,
+  "kind": "material",
+  "category": "Краски и растворители"
+ },
+ {
+  "name": "Nasadka atverka dlya shrupaverta",
+  "unit": "шт",
+  "price": 19000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Vishka xizmati",
+  "unit": "час",
+  "price": 400000,
+  "kind": "service",
+  "category": "Услуги"
+ },
+ {
+  "name": "Banner tortish uchun arqon",
+  "unit": "м",
+  "price": 20000,
+  "kind": "material",
+  "category": "Хозтовары и прочее"
+ },
+ {
+  "name": "ABS serebro tsarapina",
+  "unit": "час",
+  "price": 20000,
+  "kind": "material",
+  "category": "ABS и ПЭТ пластик"
+ },
+ {
+  "name": "Tros ruloni",
+  "unit": "шт",
+  "price": 200000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Devor flanesi",
+  "unit": "шт",
+  "price": 2000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Tablichka krepleniyasi",
+  "unit": "шт",
+  "price": 4000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Super kley",
+  "unit": "шт",
+  "price": 7000,
+  "kind": "material",
+  "category": "Скотч и клей"
+ },
+ {
+  "name": "Ikki tomonlama marker",
+  "unit": "шт",
+  "price": 4000,
+  "kind": "material",
+  "category": "Канцтовары"
+ },
+ {
+  "name": "Lominatsiya",
+  "unit": "м",
+  "price": 30000,
+  "kind": "service",
+  "category": "Услуги"
+ },
+ {
+  "name": "Lominatsiya 1.27 glansiviy",
+  "unit": "м",
+  "price": 24000,
+  "kind": "service",
+  "category": "Услуги"
+ },
+ {
+  "name": "Sement",
+  "unit": "мешок",
+  "price": 35000,
+  "kind": "material",
+  "category": "Хозтовары и прочее"
+ },
+ {
+  "name": "Antiseptik",
+  "unit": "шт",
+  "price": 12000,
+  "kind": "material",
+  "category": "Хозтовары и прочее"
+ },
+ {
+  "name": "Changang texnik ko'rik",
+  "unit": "шт",
+  "price": 200000,
+  "kind": "service",
+  "category": "Услуги"
+ },
+ {
+  "name": "Roll up 200*80sm lik",
+  "unit": "шт",
+  "price": 305000,
+  "kind": "material",
+  "category": "Конструкции"
+ },
+ {
+  "name": "G'ildirak oddiy",
+  "unit": "шт",
+  "price": 100000,
+  "kind": "material",
+  "category": "Хозтовары и прочее"
+ },
+ {
+  "name": "Gildirak tormozli",
+  "unit": "шт",
+  "price": 115000,
+  "kind": "material",
+  "category": "Хозтовары и прочее"
+ },
+ {
+  "name": "Shkurka",
+  "unit": "м",
+  "price": 13000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Filt eco solvent kraskasi uchun (20 dona)",
+  "unit": "комплект",
+  "price": 23730,
+  "kind": "material",
+  "category": "Краски и растворители"
+ },
+ {
+  "name": "Rels eshik uchun",
+  "unit": "комплект",
+  "price": 100000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Rolik surma eshik uchun",
+  "unit": "комплект",
+  "price": 65000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Pufakchali o'rash plyonkasi",
+  "unit": "шт",
+  "price": 100000,
+  "kind": "material",
+  "category": "Плёнки и бумага для печати"
+ },
+ {
+  "name": "HDD 2TB lik tashqi hard",
+  "unit": "шт",
+  "price": 1664096,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Kovrik dlya rezki",
+  "unit": "шт",
+  "price": 60000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "HP Smart Tank 670 qora, sariq, ko'k va pushti rangisidan",
+  "unit": "шт",
+  "price": 125000,
+  "kind": "material",
+  "category": "Краски и растворители"
+ },
+ {
+  "name": "Canon LBP633Cdw",
+  "unit": "шт",
+  "price": 300000,
+  "kind": "material",
+  "category": "Краски и растворители"
+ },
+ {
+  "name": "Kraska Universal oq va qora solvent printeri uchun",
+  "unit": "шт",
+  "price": 480000,
+  "kind": "material",
+  "category": "Краски и растворители"
+ },
+ {
+  "name": "Kraska Phaeton sariq va qizil solvent printeri uchun",
+  "unit": "шт",
+  "price": 504000,
+  "kind": "material",
+  "category": "Краски и растворители"
+ },
+ {
+  "name": "Buxoro-Toshkent yo'nalishi",
+  "unit": "шт",
+  "price": 243750,
+  "kind": "service",
+  "category": "Услуги"
+ },
+ {
+  "name": "Farg'ona-Toshkent yo'nalishi",
+  "unit": "шт",
+  "price": 216700,
+  "kind": "service",
+  "category": "Услуги"
+ },
+ {
+  "name": "Solvent printeriga remen 392-2GT",
+  "unit": "шт",
+  "price": 67000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Solvent printeriga remen 392-2M",
+  "unit": "шт",
+  "price": 300000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Lampochka kottasidan 50 watli 6500K",
+  "unit": "шт",
+  "price": 90000,
+  "kind": "material",
+  "category": "Свет: диоды и блоки питания"
+ },
+ {
+  "name": "Shpatel",
+  "unit": "шт",
+  "price": 5000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Shpaklevka",
+  "unit": "шт",
+  "price": 35000,
+  "kind": "material",
+  "category": "Хозтовары и прочее"
+ },
+ {
+  "name": "Shkurka dumaloq",
+  "unit": "шт",
+  "price": 700,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Og'ir yuklar uchun ikki g'ildirakli aravacha",
+  "unit": "шт",
+  "price": 670000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Sintefon",
+  "unit": "шт",
+  "price": 105000,
+  "kind": "material",
+  "category": "Хозтовары и прочее"
+ },
+ {
+  "name": "Kluch gayka uchun 13 talik",
+  "unit": "шт",
+  "price": 13000,
+  "kind": "material",
+  "category": "Профиль и крепёж"
+ },
+ {
+  "name": "Ruletka 3 meterlik",
+  "unit": "шт",
+  "price": 20000,
+  "kind": "material",
+  "category": "Инструменты"
+ },
+ {
+  "name": "Hojatxona cho'tkasi",
+  "unit": "шт",
+  "price": 65000,
+  "kind": "material",
+  "category": "Хозтовары и прочее"
+ }
+]
